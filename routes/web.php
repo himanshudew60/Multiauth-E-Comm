@@ -113,7 +113,7 @@ Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
     Route::delete('/cart/remove/{id}', [UserController::class, 'removeFromCart'])->name('cart.remove');
     Route::post('/user-info', [UserController::class, 'store'])->name('store');
     Route::get('/user-edit', [UserController::class, 'edit'])->name('edit');
-    Route::get('/user-info', [UserController::class, 'info'])->name('info');
+    Route::get('/getuser-info', [UserController::class, 'info'])->name('info');
     Route::post('/buy-all', [UserController::class, 'buyAllCartItems'])->name('buyAll');
     Route::get('/my-orders', action: [UserController::class, 'myOrders'])->name('orders');  
     Route::get('/user/generate-bill/date/{date}', [UserController::class, 'generateBillByDate'])->name('generateBillByDate');
