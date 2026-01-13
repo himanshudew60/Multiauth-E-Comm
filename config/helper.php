@@ -19,17 +19,19 @@ if (!function_exists('decryptAES')) {
     }
 }
 
-function EVP_BytesToKey($password, $salt, $key_len = 32, $iv_len = 16)
-{
-    $dtot = '';
-    $d = '';
-    while (strlen($dtot) < ($key_len + $iv_len)) {
-        $d = md5($d . $password . $salt, true);
-        $dtot .= $d;
-    }
+if (!function_exists('EVP_BytesToKey')) {
+    function EVP_BytesToKey($password, $salt, $key_len = 32, $iv_len = 16)
+    {
+        $dtot = '';
+        $d = '';
+        while (strlen($dtot) < ($key_len + $iv_len)) {
+            $d = md5($d . $password . $salt, true);
+            $dtot .= $d;
+        }
 
-    return [
-        'key' => substr($dtot, 0, $key_len),
-        'iv' => substr($dtot, $key_len, $iv_len)
-    ];
+        return [
+            'key' => substr($dtot, 0, $key_len),
+            'iv' => substr($dtot, $key_len, $iv_len)
+        ];
+    }
 }
