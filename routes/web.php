@@ -106,7 +106,8 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 
 Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
     Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
-    Route::match(['get','post'],'/info/{id}', [UserController::class, 'info'])->name('info');
+   Route::match(['get','post'],'/info/{id}', [UserController::class, 'info'])
+    ->name('info.byId');
     Route::get('/cart', [UserController::class, 'showCart'])->name('cart');
     Route::get('/add-to-cart/{id}', [UserController::class, 'addToCart'])->name('addToCart');
     Route::post('/cart/update/{id}', [UserController::class, 'updateCartQuantity'])->name('cart.update');
